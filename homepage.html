@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Untold Stories - Share Your Tales</title>
+  <!-- Add Font Awesome CSS link here -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* Your CSS styles go here */
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      background-color: #f7f3ee;
+      color: #3d2c29;
+    }
+
+    header {
+      background-color: #3d2c29;
+      color: #fff;
+      padding: 1px;
+      text-align: center;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    nav li {
+      margin-right: 20px;
+    }
+
+    nav a {
+      color: #A97947;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .hero {
+      background-image: url('hero_background.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #A97947;
+      position: relative; /* Added position relative to allow positioning of pseudo-elements */
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+      position: relative; /* Added position relative to allow positioning of pseudo-elements */
+    }
+
+    .hero h1::before,
+    .hero h1::after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      font-size: 32px;
+      color: #A97947;
+    }
+
+    .hero h1::before {
+      left: -10px;
+      content: "\f6c5"; /* Unicode for the coffee cup icon */
+    }
+
+    .hero h1::after {
+      right: -10px;
+      content: "\f70c"; /* Unicode for the flower icon */
+    }
+
+    .hero p {
+      font-size: 20px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .story-cta {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .story-cta a {
+      display: inline-block;
+      background-color: #3d2c29;
+      color: #fff;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .community-feed {
+      background-color: #fff;
+      padding: 40px;
+      margin-top: 40px;
+    }
+
+    .community-feed h2 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    .journal-entry {
+      border: 1px solid #af6f09;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+    }
+    .logo{
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+    footer {
+      background-color: #3d2c29;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav>
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="about-us.html">About Us</a></li> <!-- Update the href attribute to point to about-us.html -->
+        <li><a href="website.html">Your Journal</a></li> <!-- Link to website.html page -->
+    </ul>
+  </nav>
+
+  <!-- Header Section -->
+  <header>
+    <h1>My Untold Stories</h1>
+    <img src="reallogo.png" class="logo">
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div>
+      <h1><span>Share Your Untold Stories</span></h1>
+      <p>Connect with a community of storytellers and share your untold tales with the world.</p>
+    </div>
+  </section>
+
+  <!-- Story Call-to-Action Section -->
+  <div class="story-cta">
+    <a href="website.html" class="tab"> Tell Your Story</a>
+  </div>
+
+  <!-- Community Feed Section -->
+  <section class="community-feed">
+    <h2>Community Feed</h2>
+    <div class="journal-entry">
+      <h3>Journal Title 1</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in tincidunt justo.</p>
+      <a href="#">Read More</a>
+    </div>
+    <div class="journal-entry">
+      <h3>Journal Title 2</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in tincidunt justo.</p>
+      <a href="#">Read More</a>
+    </div>
+    <!-- Add more journal entries here -->
+  </section>
+
+  <!-- Footer Section -->
+  <footer>
+    <p>&copy; 2023 Untold Stories. All rights reserved.</p>
+  </footer>
+</body>
+</html>

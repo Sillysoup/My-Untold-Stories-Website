@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Journal Website</title>
+  <style>
+    body {
+      background-color: #3d2c29; /* Burnt brown color for the background */
+      background-image: url('notebook-paper-background.jpg'); /* Replace 'notebook-paper-background.jpg' with the appropriate image */
+      background-size: cover;
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    header {
+      background-color: #f5e6cc;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .tabs {
+      list-style: none;
+      padding: 0;
+      display: inline-block;
+      margin: 10px 0;
+    }
+
+    .tab {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #3d2c29;
+      color: white;
+      cursor: pointer;
+      border-radius: 5px 5px 0 0;
+    }
+
+    main {
+      padding: 20px;
+    }
+    .journal-container {
+      width: 80%;
+      margin: 0 auto;
+    }
+
+    .journal-page {
+      background-color: #f5e6cc; /* Light burnt notebook color */
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+      display: flex;
+      justify-content: center;
+    }
+
+    .journal-content {
+      width: 100%;
+      height: 400px;
+      font-size: 16px;
+      border: none;
+      box-sizing: border-box;
+      background-color: transparent;
+      background-image: url('notebook-paper-with-lines.png'); /* Replace 'notebook-paper-with-lines.png' with the appropriate lined paper image with visible lines */
+      background-size: contain;
+      background-repeat: repeat-y;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    .image-upload-label {
+      background-color: #472b13;
+      color: white;
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      margin-top: 10px;
+      display: inline-block;
+      font-weight: bold;
+    }
+
+    .image-upload-label input[type="file"] {
+      display: none;
+    }
+
+    .image-preview {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .head {
+      color: #472b13;
+    }
+
+    /* Hide journal tab and content by default */
+    .tab-content#journal {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="head"> <h1>Your Journal</h1></div>
+    <ul class="tabs">
+      <li class="tab" onclick="openTab('journal')">Journal</li>
+      <a href="about-us.html" class="tab">About Us</a>
+      <a href="homepage.html" class="tab">Home</a>
+      <a href="about-us.html" class="tab">Journal</a>
+    </ul>
+  </header>
+  
+  <main>
+    <div id="accountModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>Create an Account</h2>
+        <form onsubmit="return createAccount()">
+          <label for="username">Username:</label>
+          <input type="text" id="username" required>
+          
+          <!-- Placeholder for password input -->
+          <label for="password">Password:</label>
+          <input type="password" id="password" required>
+          
+          <!-- Placeholder for profile picture selection -->
+          <label for="profilePicture">Choose a Profile Picture:</label>
+          <input type="file" accept="image/*" id="profilePicture" onchange="previewProfileImage(event)" required>
+          <div class="profile-image-preview">
+            <img id="profileImagePreview" src="#" alt="Profile Picture Preview">
+          </div>
+          
+          <button type="submit">Create Account</button>
+        </form>
+      </div>
+    </div>
+    <div class="tab-content active" id="home">
+      <h2>Welcome to Your Journal Website!</h2>
+      <p>This is your own personal journal! Write all your stories and publish them when you are ready. Don't forget to click the "Save Your Work" button at the bottom so you don't lose your work! </p>
+    </div>
+    
+    <!-- Journal content -->
+    <div class="tab-content" id="journal">
+      <div class="journal-container">
+        <div class="journal-page">
+          <textarea class="journal-content" name="entry" placeholder="Start writing in your journal..." id="journalTextarea"></textarea>
+          <label class="image-upload-label">
+            <span>Upload Image</span>
+            <input type="file" accept="image/*" onchange="previewImage(event)">
+          </label>
+          <div class="image-preview">
+            <img id="imagePreview" src="#" alt="Image Preview">
+          </div>
+        </div>
+      </div>
+      <button onclick="saveWork()" style="margin-top: 10px; background-color:brown;">Save Your Work</button>
+    </div>
+  </main>
+  
+  <!-- Publish button -->
+  <button onclick="publishWork()" style="margin-top: 10px;">Publish Your Work</button>
+  
+  <script>
+    // Function to open the account creation modal
+    function openAccountModal() {
+      const accountModal = document.getElementById('accountModal');
+      accountModal.style.display = 'block';
+    }
+
+    // Function to preview the profile image
+    function previewProfileImage(event) {
+      const profileImagePreview = document.getElementById('profileImagePreview');
+      const file = event.target.files[0];
+      const reader = new FileReader();
+
+      reader.onload = function() {
+        profileImagePreview.src = reader.result;
+      }
+
+      if (file) {
+        reader.readAsDataURL(file);
+      }
+    }
+    
+    // Function to handle account creation (frontend only)
+    function createAccount()
+      const username = document.getElementById('username').value;
+      // Retrieve the selected profile picture (if needed)
+      const profilePicture = document.getElementById('profilePicture').files[0];
+      
+      // Perform client-side validation on the username and profilePicture (if needed)
+      // (e.g., check if the username is unique, check if the profile picture is within size limits, etc.)
+      
+      // Store the username and profilePicture data in localStorage or a JavaScript object (temporarily, for demonstration purposes)
+      localStorage.setItem('username', username);
+      // Save the profile picture URL in localStorage (if you want
+    </script>
+</body>
+</html>
